@@ -4,6 +4,8 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # User-specific files
+.output
+
 *.rsuser
 *.suo
 *.user
@@ -148,6 +150,7 @@ coverage*.xml
 coverage*.info
 
 # Visual Studio code coverage results
+
 *.coverage
 *.coveragexml
 
