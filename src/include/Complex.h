@@ -22,8 +22,8 @@ public:
     void add(Complex);
 
     Complex() {
-        this->real = 0;
-        this->imaginary = 0;
+        real = 0;
+        imaginary = 0;
     }
 
     Complex(double real, double imaginary) {

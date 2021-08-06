@@ -24,7 +24,7 @@ public:
     void calculateColor(int);
 
     Pixel(double re, double im) {
-        this->iterations = 0;
-        this->complex = Complex(re, im);
+        iterations = 0;
+        complex = Complex(re, im);
     }
 };

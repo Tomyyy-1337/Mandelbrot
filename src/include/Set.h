@@ -28,7 +28,7 @@ private:
     void createPixel(double, double, double);
 
     // Potenzfunktin mit Laufzeit O(log(n))
-    double myPow(double base, int exponent);
+    double pow(double base, int exponent);
 
 public:
 
@@ -62,7 +62,7 @@ public:
         this->resX = resX;
         this->resY = resY;
         this->maxIterations = maxIterations;
-        double currentZoom = 0.5 * this->myPow(zoom, zoomindx);
+        double currentZoom = 0.5 * this->pow(zoom, zoomindx);
         createPixel(currentZoom, centerX, centerY);
         this->currentRow = 0;
         this->finished = false;
