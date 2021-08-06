@@ -22,7 +22,7 @@ private:
 
     sf::Sprite sprite;
 
-    int zoomIndx = 0;
+    int zoomIndx = 23;
 
     double zoom = 1.05;
 
