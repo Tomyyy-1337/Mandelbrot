@@ -4,13 +4,13 @@ void Pixel::calculateIterations(int maxIterations) {
     Complex z(0, 0);
     for (int i = 1; i <= maxIterations; i++) {
         z.square();
-        z.add(this->complex);
+        z.add(complex);
         if (z.absoluteValue() >= 4) {
-            this->iterations = i;
+            iterations = i;
             return;
         }
     }
-    this->iterations = 0;
+    iterations = 0;
 }
 
 void Pixel::calculateColor(int maxIterations) {
@@ -19,57 +19,58 @@ void Pixel::calculateColor(int maxIterations) {
     // this->g = this->iterations * 2 % 256;
     // this->b = this->iterations * 2 % 256;
 
-    if (this->iterations == 0) {
-        this->r = 0;
-        this->g = 0;
-        this->b = 0;
+    if (iterations == 0) {
+        r = 0;
+        g = 0;
+        b = 0;
     }
     else {
-        int stepsize = 16;
+        int stepsize = 6;
+
         int stepcolors = 256 / stepsize;
-        int relevant = this->iterations % (stepcolors * 6);
+        int relevant = iterations % (stepcolors * 6);
 
         switch (relevant / stepcolors) {
         case 0: //Türkis zu Blau
             relevant = relevant % stepcolors;
-            this->r = 0;
-            this->g = 255 - relevant * stepsize;
-            this->b = 255;
+            r = 0;
+            g = 255 - relevant * stepsize;
+            b = 255;
             break;
         case 1: // Blau zu Lila
             relevant = relevant % stepcolors;
-            this->r = relevant * stepsize;
-            this->g = 0;
-            this->b = 255;
+            r = relevant * stepsize;
+            g = 0;
+            b = 255;
             break;
         case 2: // Lila zu Rot
             relevant = relevant % stepcolors;
-            this->r = 255;
-            this->g = 0;
-            this->b = 255 - relevant * stepsize;
+            r = 255;
+            g = 0;
+            b = 255 - relevant * stepsize;
             break;
         case 3: //Rot zu Gelb
             relevant = relevant % stepcolors;
-            this->r = 255;
-            this->g = relevant * stepsize;
-            this->b = 0;
+            r = 255;
+            g = relevant * stepsize;
+            b = 0;
             break;
         case 4: // Gelb zu Grün
             relevant = relevant % stepcolors;
-            this->r = 255 - relevant * stepsize;
-            this->g = 255;
-            this->b = 0;
+            r = 255 - relevant * stepsize;
+            g = 255;
+            b = 0;
             break;
         case 5: // Grün zu Türkis
             relevant = relevant % stepcolors;
-            this->r = 0;
-            this->g = 255;
-            this->b = relevant * stepsize;
+            r = 0;
+            g = 255;
+            b = relevant * stepsize;
             break;
         default:
-            this->r = 255;
-            this->g = 255;
-            this->b = 255;
+            r = 255;
+            g = 255;
+            b = 255;
         }
     }
 }

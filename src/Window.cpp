@@ -4,44 +4,44 @@
 #include <string>
 
 void Window::updateSprite() {
-    this->texture.loadFromImage(this->set.image);
-    this->sprite.setTexture(this->texture);
+    texture.loadFromImage(set.image);
+    sprite.setTexture(texture);
 }
 
 void Window::mainloop() {
     sf::Clock deltaClock;
     double frametime;
 
-    while (this->window->isOpen()) {
+    while (window->isOpen()) {
         sf::Event event;
         frametime = 0;
 
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
-                this->window->close();
+                window->close();
             }
         }
 
-        while (frametime < 0.1 && !this->set.finished) {
-            this->set.solveNextRow();
+        while (frametime < 0.12 && !set.finished) {
+            set.solveNextRow();
             frametime += deltaClock.restart().asSeconds();
         }
 
-        this->updateSprite();
+        updateSprite();
 
-        this->window->clear();
+        window->clear();
 
-        this->window->draw(this->sprite);
+        window->draw(sprite);
 
-        this->window->display();
+        window->display();
 
-        if (this->set.finished) {
-            this->set.saveImage(this->zoomIndx);
-            std::cout << "Das " << this->zoomIndx << ". Bild wurde gespeichert" << std::endl;
-            this->zoomIndx++;
-            set = Set(width, height, this->centerX, this->centerY, this->maxIterations, this->zoomIndx, this->zoom);
-            std::string windowTitle = "Mandelbrot - " + std::to_string(this->zoomIndx);
-            this->window->setTitle(windowTitle);
+        if (set.finished) {
+            set.saveImage(zoomIndx);
+            std::cout << "Das " << zoomIndx << ". Bild wurde gespeichert" << std::endl;
+            zoomIndx++;
+            set = Set(width, height, centerX, centerY, maxIterations, zoomIndx, zoom);
+            std::string windowTitle = "Mandelbrot - " + std::to_string(zoomIndx);
+            window->setTitle(windowTitle);
         }
     }
 }

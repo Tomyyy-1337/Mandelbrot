@@ -22,7 +22,7 @@ private:
 
     sf::Sprite sprite;
 
-    int zoomIndx = 0;
+    int zoomIndx = 23;
 
     double zoom = 2;
 
@@ -39,7 +39,6 @@ private:
 
 public:
 
-    //Todo
     void mainloop();
 
 
