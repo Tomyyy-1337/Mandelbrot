@@ -16,10 +16,12 @@ void Set::colorPixel(unsigned int x, unsigned int y) {
 
 void Set::saveImage(int indx) {
     std::string filePath = "output/Mandelbrot_";
-    if (indx == -1) {
+    if (indx == -1) 
+    {
         filePath += "temp.png";
     }
-    else {
+    else 
+    {
         filePath += std::to_string(indx) + ".png";
     }
     image.saveToFile(filePath);
@@ -32,8 +34,10 @@ void Set::createPixel(double zoom, double centerX, double centerY) {
     double yStart = centerY + (stepSize * (resY / 2));
     double yPos = yStart;
 
-    for (int x = 0; x < resX; x++) {
-        for (int y = 0; y < resY; y++) {
+    for (int x = 0; x < resX; x++) 
+    {
+        for (int y = 0; y < resY; y++) 
+        {
             Points[x].push_back(Pixel(xPos, yPos));
             yPos -= stepSize;
         }
@@ -43,12 +47,13 @@ void Set::createPixel(double zoom, double centerX, double centerY) {
 }
 
 void Set::solveAllPixel() {
-    for (int x = 0; x < resX; x++) {
-        for (int y = 0; y < resY; y++) {
+    for (int x = 0; x < resX; x++) 
+    {
+        for (int y = 0; y < resY; y++) 
+        {
             Points[x][y].calculateIterations(maxIterations);
             Points[x][y].calculateColor(maxIterations);
             colorPixel(x, y);
-
         }
     }
 }

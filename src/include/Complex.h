@@ -19,7 +19,7 @@ public:
     void square();
 
     // fügt der zahl c hinzu
-    void add(Complex);
+    void add(Complex c);
 
     Complex() {
         real = 0;

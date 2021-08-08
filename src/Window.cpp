@@ -3,26 +3,32 @@
 #include <iostream>
 #include <string>
 
-void Window::updateSprite() {
+void Window::updateSprite() 
+{
     texture.loadFromImage(set.image);
     sprite.setTexture(texture);
 }
 
-void Window::mainloop() {
+void Window::mainloop() 
+{
     sf::Clock deltaClock;
     double frametime;
 
-    while (window->isOpen()) {
+    while (window->isOpen()) 
+    {
         sf::Event event;
         frametime = 0;
 
-        while (window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
+        while (window->pollEvent(event)) 
+        {
+            if (event.type == sf::Event::Closed) 
+            {
                 window->close();
             }
         }
 
-        while (frametime < 0.12 && !set.finished) {
+        while (frametime < 0.12 && !set.finished) 
+        {
             set.solveNextRow();
             frametime += deltaClock.restart().asSeconds();
         }
@@ -35,7 +41,8 @@ void Window::mainloop() {
 
         window->display();
 
-        if (set.finished) {
+        if (set.finished) 
+        {
             set.saveImage(zoomIndx);
             std::cout << "Das " << zoomIndx << ". Bild wurde gespeichert" << std::endl;
             zoomIndx++;
