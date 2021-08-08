@@ -48,13 +48,12 @@ public:
     // Gibte die Iterations des Sets in der Konsole aus
     void print();
 
-    Set() {
-
-    }
+    Set() { }
 
     Set(unsigned int resX, unsigned int resY, double centerX, double centerY, int maxIterations, int zoomindx, double zoom) {
         image.create(resX, resY, sf::Color(0, 0, 0));
-        for (int i = 0; i < resX; i++) {
+        for (int i = 0; i < resX; i++) 
+        {
             std::vector<Pixel> v1;
             v1.reserve(resY);
             Points.push_back(v1);
